@@ -10,7 +10,7 @@ const Detail = () => {
 
     const navigate = useNavigate();
 
-    const FLASK_HOST = 'http://localhost:5000';
+    const FLASK_HOST = 'https://9da6-103-182-234-178.ngrok-free.app';
 
     useEffect(() => {
         checkToken();

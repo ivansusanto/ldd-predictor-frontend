@@ -7,7 +7,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const FLASK_HOST = 'http://localhost:5000';
+    const FLASK_HOST = 'https://9da6-103-182-234-178.ngrok-free.app';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
