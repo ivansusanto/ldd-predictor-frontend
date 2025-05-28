@@ -28,7 +28,8 @@ const Admin = () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                        'ngrok-skip-browser-warning': 'true'
                     },
                     body: JSON.stringify({ token: localStorage.getItem('token') }),
                 });
@@ -51,7 +52,8 @@ const Admin = () => {
         try {
             const res = await fetch(`${FLASK_HOST}/user/all`, {
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                    'ngrok-skip-browser-warning': 'true'
                 }
             });
             const data = await res.json();
@@ -76,7 +78,8 @@ const Admin = () => {
                 const res = await fetch(`${FLASK_HOST}/user/delete/${username}`, {
                     method: 'DELETE',
                     headers: {
-                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                        'ngrok-skip-browser-warning': 'true'
                     }
                 });
 
@@ -100,7 +103,8 @@ const Admin = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                    'ngrok-skip-browser-warning': 'true'
                 },
                 body: JSON.stringify({ fullname, username, password }),
             });
