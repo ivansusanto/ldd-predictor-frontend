@@ -368,7 +368,7 @@ const Home = () => {
                             {!processed && !processed?.sagittal && <>
                                 <ImageSlider
                                     title="Sagittal View"
-                                    images={resultImages.sagittal_url}
+                                    images={resultImages.sagittal_url.sort((a, b) => a.localeCompare(b))}
                                     start={parseInt(resultImages.sagittal_url.length / 2)}
                                     choosedImage={choosedSagittal}
                                     setChoosedImage={setChoosedSagittal}
@@ -423,7 +423,7 @@ const Home = () => {
                             {processed && processed?.sagittal && <>
                                 <ImageSlider
                                     title="Axial View"
-                                    images={resultImages.axial_url}
+                                    images={resultImages.axial_url.sort((a, b) => a.localeCompare(b))}
                                     start={choosedAxial[0] - 1}
                                     choosedImage={choosedAxial}
                                     setChoosedImage={setChoosedAxial}
