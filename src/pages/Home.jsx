@@ -92,7 +92,8 @@ const Home = () => {
         try {
             const response = await axios.post(`${FLASK_HOST}/upload`, formData, {
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                    'ngrok-skip-browser-warning': 'true'
                 }
             });
             if (response.data) {
@@ -102,7 +103,8 @@ const Home = () => {
                         `${FLASK_HOST}/get-sagittal-axial/${response.data.id}/${response.data.series[0]}`,
                         {
                             headers: {
-                                'Authorization': 'Bearer ' + localStorage.getItem('token')
+                                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                                'ngrok-skip-browser-warning': 'true'
                             }
                         }
                     );
@@ -131,7 +133,8 @@ const Home = () => {
                 `${FLASK_HOST}/get-sagittal-axial/${data.id}/${currentSelectedSeries}`,
                 {
                     headers: {
-                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                        'ngrok-skip-browser-warning': 'true'
                     }
                 }
             );
@@ -167,7 +170,8 @@ const Home = () => {
                 sagittal: choosedSagittal
             }, {
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                    'ngrok-skip-browser-warning': 'true'
                 }
             });
             if (response.data) {
@@ -196,7 +200,8 @@ const Home = () => {
                 axial: choosedAxial
             }, {
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                    'ngrok-skip-browser-warning': 'true'
                 }
             });
             if (response.data) {
