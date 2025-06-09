@@ -25,7 +25,7 @@ const Home = () => {
     const sliderRef = useRef();
     const navigate = useNavigate();
 
-    const FLASK_HOST = 'https://5364-103-182-234-178.ngrok-free.app';
+    const FLASK_HOST = 'https://c552-103-182-234-178.ngrok-free.app';
 
     useEffect(() => {
         checkToken();
