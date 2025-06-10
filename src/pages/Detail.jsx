@@ -111,7 +111,7 @@ const Detail = () => {
                         if (!res.ok) throw new Error("Image load failed");
                         const blob = await res.blob();
 
-                        const cropped = await axial.cropped.map(async (cropped) => {
+                        const cropped = await Promise.all(axial.cropped.map(async (cropped) => {
                             const cropped_res = await fetch(cropped.url, {
                                 headers: {
                                     'ngrok-skip-browser-warning': 'true'
@@ -121,7 +121,7 @@ const Detail = () => {
                             const cropped_blob = await cropped_res.blob();
 
                             return { ...cropped, url: URL.createObjectURL(cropped_blob) }
-                        })
+                        }))
 
                         return { ...axial, cropped: cropped, result: URL.createObjectURL(blob) };
                     } catch (err) {
