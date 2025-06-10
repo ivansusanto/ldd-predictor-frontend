@@ -183,7 +183,7 @@ const Home = () => {
             const data = res.data;
 
             const sagittalUrl = await Promise.all(
-                data.sagittal_url.map(async (url) => {
+                data.sagittal_url.sort((a, b) => a.localeCompare(b)).map(async (url) => {
                     try {
                         const res = await fetch(url, {
                             headers: {
@@ -202,7 +202,7 @@ const Home = () => {
             data.sagittal_url = sagittalUrl;
 
             const axialUrl = await Promise.all(
-                data.sagittal_url.map(async (url) => {
+                data.axial_url.sort((a, b) => a.localeCompare(b)).map(async (url) => {
                     try {
                         const res = await fetch(url, {
                             headers: {
@@ -486,7 +486,7 @@ const Home = () => {
                             {!processed && !processed?.sagittal && <>
                                 <ImageSlider
                                     title="Sagittal View"
-                                    images={resultImages.sagittal_url.sort((a, b) => a.localeCompare(b))}
+                                    images={resultImages.sagittal_url}
                                     start={parseInt(resultImages.sagittal_url.length / 2)}
                                     choosedImage={choosedSagittal}
                                     setChoosedImage={setChoosedSagittal}
@@ -541,7 +541,7 @@ const Home = () => {
                             {processed && processed?.sagittal && <>
                                 <ImageSlider
                                     title="Axial View"
-                                    images={resultImages.axial_url.sort((a, b) => a.localeCompare(b))}
+                                    images={resultImages.axial_url}
                                     start={choosedAxial[0] - 1}
                                     choosedImage={choosedAxial}
                                     setChoosedImage={setChoosedAxial}
