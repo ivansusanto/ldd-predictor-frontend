@@ -179,7 +179,48 @@ const Home = () => {
                     }
                 }
             );
-            setResultImages(res.data);
+
+            const data = res.data;
+
+            const sagittalUrl = await Promise.all(
+                data.sagittal_url.map(async (url) => {
+                    try {
+                        const res = await fetch(url, {
+                            headers: {
+                                'ngrok-skip-browser-warning': 'true'
+                            }
+                        });
+                        if (!res.ok) throw new Error("Image load failed");
+                        const blob = await res.blob();
+                        return URL.createObjectURL(blob);
+                    } catch (err) {
+                        console.error("Image fetch failed", url, err);
+                        return null;
+                    }
+                })
+            );
+            data.sagittal_url = sagittalUrl;
+
+            const axialUrl = await Promise.all(
+                data.sagittal_url.map(async (url) => {
+                    try {
+                        const res = await fetch(url, {
+                            headers: {
+                                'ngrok-skip-browser-warning': 'true'
+                            }
+                        });
+                        if (!res.ok) throw new Error("Image load failed");
+                        const blob = await res.blob();
+                        return URL.createObjectURL(blob);
+                    } catch (err) {
+                        console.error("Image fetch failed", url, err);
+                        return null;
+                    }
+                })
+            );
+            data.axial_url = axialUrl;
+
+            setResultImages(data);
             setPreview(false);
             setChoosedSagittal(parseInt(res.data.sagittal_url.length / 2));
         } catch (error) {
