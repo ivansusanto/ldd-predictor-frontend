@@ -292,7 +292,6 @@ const Home = () => {
                 );
                 data.sagittal.view = sagittalView;
 
-                console.log(data);
                 setProcessed({
                     ...data
                 });
