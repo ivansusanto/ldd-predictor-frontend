@@ -62,7 +62,16 @@ const ImageSlider = ({
                                 className="flex justify-center transition-transform duration-300"
                             >
                                 <img
-                                    src={url}
+                                    src={async () => {
+                                        const res = await fetch(url, {
+                                            headers: {
+                                                "ngrok-skip-browser-warning": true
+                                            }
+                                        });
+                                        const blob = await res.blob();
+                                        const objectUrl = URL.createObjectURL(blob);
+                                        return objectUrl;
+                                    }}
                                     alt={`${title} ${index + 1}`}
                                     className={`rounded shadow-md transition-all duration-300
                                         ${index === currentSlide
