@@ -175,6 +175,41 @@ const Home = () => {
                 }
             });
             if (response.data) {
+                const data = response.data;
+
+                try {
+                    const res = await fetch(data.sagittal.result, {
+                        headers: {
+                            'ngrok-skip-browser-warning': 'true'
+                        }
+                    });
+                    if (!res.ok) throw new Error("Image load failed");
+                    const blob = await res.blob();
+                    data.sagittal.result = URL.createObjectURL(blob);
+                } catch (err) {
+                    console.error("Image fetch failed", data.sagittal.result, err);
+                    return null;
+                }
+
+                const sagittalView = await Promise.all(
+                    data.sagittal.view.map(async (url) => {
+                        try {
+                            const res = await fetch(url, {
+                                headers: {
+                                    'ngrok-skip-browser-warning': 'true'
+                                }
+                            });
+                            if (!res.ok) throw new Error("Image load failed");
+                            const blob = await res.blob();
+                            return URL.createObjectURL(blob);
+                        } catch (err) {
+                            console.error("Image fetch failed", url, err);
+                            return null;
+                        }
+                    })
+                );
+                data.sagittal.view = sagittalView;
+
                 setProcessed({
                     ...response.data
                 });
