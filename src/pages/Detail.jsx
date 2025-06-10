@@ -91,7 +91,7 @@ const Detail = () => {
                         });
                         if (!res.ok) throw new Error("Image load failed");
                         const blob = await res.blob();
-                        return { url: URL.createObjectURL(blob), result: cropped.result };
+                        return { ...cropped, url: URL.createObjectURL(blob) };
                     } catch (err) {
                         console.error("Image fetch failed", cropped.url, err);
                         return null;
@@ -99,6 +99,38 @@ const Detail = () => {
                 })
             );
             data.sagittal.cropped = sagittalCroppedImages;
+
+            const axialImages = await Promise.all(
+                data.axial.map(async (axial) => {
+                    try {
+                        const res = await fetch(axial.result, {
+                            headers: {
+                            'ngrok-skip-browser-warning': 'true'
+                            }
+                        });
+                        if (!res.ok) throw new Error("Image load failed");
+                        const blob = await res.blob();
+
+                        const cropped = axial.cropped.map(async (cropped) => {
+                            const cropped_res = await fetch(cropped.url, {
+                                headers: {
+                                'ngrok-skip-browser-warning': 'true'
+                                }
+                            });
+                            if (!cropped_res.ok) throw new Error("Image load failed");
+                            const cropped_blob = await cropped_res.blob();
+
+                            return { ...cropped, url: URL.createObjectURL(cropped_blob) }
+                        })
+
+                        return { ...axial, cropped: cropped, result: URL.createObjectURL(blob) };
+                    } catch (err) {
+                        console.error("Image fetch failed", axial.result, err);
+                        return null;
+                    }
+                })
+            );
+            data.axial = axialImages;
 
             setProcessed(data);
             console.log(data)
