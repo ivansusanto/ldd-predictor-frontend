@@ -6,38 +6,39 @@ import Admin from './pages/Admin';
 import History from './pages/History';
 import Detail from './pages/Detail';
 
-const App = () => {
-	const NgrokImageLoader = () => {
-		const location = useLocation();
+const NgrokImageLoader = () => {
+	const location = useLocation();
 
-		useEffect(() => {
-			const images = document.querySelectorAll("img[data-src]");
+	useEffect(() => {
+		const images = document.querySelectorAll("img[data-src]");
 
-			images.forEach(img => {
-				const imageUrl = img.getAttribute("data-src");
-				if (!imageUrl) return;
+		images.forEach(img => {
+			const imageUrl = img.getAttribute("data-src");
+			if (!imageUrl) return;
 
-				fetch(imageUrl, {
-					headers: {
-						"ngrok-skip-browser-warning": "true"
-					}
+			fetch(imageUrl, {
+				headers: {
+					"ngrok-skip-browser-warning": "true"
+				}
+			})
+				.then(response => {
+					if (!response.ok) throw new Error("Image load failed");
+					return response.blob();
 				})
-					.then(response => {
-						if (!response.ok) throw new Error("Image load failed");
-						return response.blob();
-					})
-					.then(blob => {
-						const objectUrl = URL.createObjectURL(blob);
-						img.src = objectUrl;
-					})
-					.catch(error => {
-						console.error("Failed to load image:", imageUrl, error);
-					});
-			});
-		}, [location.pathname]);
+				.then(blob => {
+					const objectUrl = URL.createObjectURL(blob);
+					img.src = objectUrl;
+				})
+				.catch(error => {
+					console.error("Failed to load image:", imageUrl, error);
+				});
+		});
+	}, [location.pathname]);
 
-		return null;
-	};
+	return null;
+};
+
+const App = () => {
 	return (
 		<Router>
 			<NgrokImageLoader />
