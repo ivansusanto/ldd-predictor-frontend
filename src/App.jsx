@@ -18,7 +18,8 @@ const NgrokImageLoader = () => {
 
 			fetch(imageUrl, {
 				headers: {
-					"ngrok-skip-browser-warning": "true"
+					"ngrok-skip-browser-warning": "true",
+					"User-Agent": "Mozilla/5.0"
 				}
 			})
 				.then(response => {
