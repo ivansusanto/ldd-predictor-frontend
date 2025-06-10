@@ -112,7 +112,7 @@ const Home = () => {
                     const data = res.data;
 
                     const sagittalUrl = await Promise.all(
-                        data.sagittal_url.map(async (url) => {
+                        data.sagittal_url.sort((a, b) => a.localeCompare(b)).map(async (url) => {
                             try {
                                 const res = await fetch(url, {
                                     headers: {
@@ -131,7 +131,7 @@ const Home = () => {
                     data.sagittal_url = sagittalUrl;
 
                     const axialUrl = await Promise.all(
-                        data.sagittal_url.map(async (url) => {
+                        data.axial_url.sort((a, b) => a.localeCompare(b)).map(async (url) => {
                             try {
                                 const res = await fetch(url, {
                                     headers: {
