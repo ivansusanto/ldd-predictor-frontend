@@ -111,7 +111,7 @@ const Detail = () => {
                         if (!res.ok) throw new Error("Image load failed");
                         const blob = await res.blob();
 
-                        const cropped = axial.cropped.map(async (cropped) => {
+                        const cropped = await axial.cropped.map(async (cropped) => {
                             const cropped_res = await fetch(cropped.url, {
                                 headers: {
                                     'ngrok-skip-browser-warning': 'true'
