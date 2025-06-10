@@ -133,7 +133,6 @@ const Detail = () => {
             data.axial = axialImages;
 
             setProcessed(data);
-            console.log(data)
         } catch (error) {
             Swal.fire('History not found', '', 'error');
         }
