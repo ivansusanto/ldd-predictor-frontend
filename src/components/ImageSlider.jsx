@@ -15,19 +15,6 @@ const ImageSlider = ({
 }) => {
     const [currentSlide, setCurrentSlide] = useState(start);
 
-    useEffect(() => {
-        images = [...images.map(async (url) => {
-            const res = await fetch(url, {
-                headers: {
-                    "ngrok-skip-browser-warning": true
-                }
-            });
-            const blob = await res.blob();
-            const objectUrl = URL.createObjectURL(blob);
-            url = objectUrl;
-        })];
-    }, []);
-
     const settings = {
         dots: false,
         infinite: true,
@@ -69,8 +56,17 @@ const ImageSlider = ({
                 />
                 <div className="w-full px-10">
                     <Slider ref={sliderRef} {...settings}>
-                        {images.map((url, index) => (
-                            <div
+                        {images.map(async (url, index) => {
+                            const res = await fetch(url, {
+                                headers: {
+                                    "ngrok-skip-browser-warning": true
+                                }
+                            });
+                            const blob = await res.blob();
+                            const objectUrl = URL.createObjectURL(blob);
+                            url = objectUrl;
+                            
+                            return (<div
                                 key={index}
                                 className="flex justify-center transition-transform duration-300"
                             >
@@ -88,8 +84,8 @@ const ImageSlider = ({
                                                 : " max-h-[50vh] opacity-50 scale-70"
                                         }`}
                                 />
-                            </div>
-                        ))}
+                            </div>)
+                        })}
                     </Slider>
                 </div>
                 <ArrowRight
