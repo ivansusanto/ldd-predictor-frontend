@@ -61,6 +61,45 @@ const Detail = () => {
                 throw new Error('Network response was not ok');
             }
             const data = await res.json();
+
+            const sagittalViewImages = await Promise.all(
+                data.sagittal.view.map(async (url) => {
+                    try {
+                        const res = await fetch(url, {
+                            headers: {
+                            'ngrok-skip-browser-warning': 'true'
+                            }
+                        });
+                        if (!res.ok) throw new Error("Image load failed");
+                        const blob = await res.blob();
+                        return URL.createObjectURL(blob);
+                    } catch (err) {
+                        console.error("Image fetch failed", url, err);
+                        return null;
+                    }
+                })
+            );
+            data.sagittal.view = sagittalViewImages;
+
+            const sagittalCroppedImages = await Promise.all(
+                data.sagittal.cropped.map(async (cropped) => {
+                    try {
+                        const res = await fetch(cropped.url, {
+                            headers: {
+                            'ngrok-skip-browser-warning': 'true'
+                            }
+                        });
+                        if (!res.ok) throw new Error("Image load failed");
+                        const blob = await res.blob();
+                        return URL.createObjectURL(blob);
+                    } catch (err) {
+                        console.error("Image fetch failed", cropped.url, err);
+                        return null;
+                    }
+                })
+            );
+            data.sagittal.cropped = sagittalCroppedImages;
+
             setProcessed(data);
         } catch (error) {
             Swal.fire('History not found', '', 'error');
