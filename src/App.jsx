@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -7,6 +7,30 @@ import History from './pages/History';
 import Detail from './pages/Detail';
 
 const App = () => {
+  useEffect(() => {
+    const images = document.querySelectorAll("img[data-src]");
+
+    images.forEach(img => {
+      const imageUrl = img.getAttribute("data-src");
+
+      fetch(imageUrl, {
+        headers: {
+          "ngrok-skip-browser-warning": "true"
+        }
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Image load failed");
+        return response.blob();
+      })
+      .then(blob => {
+        const objectUrl = URL.createObjectURL(blob);
+        img.src = objectUrl;
+      })
+      .catch(error => {
+        console.error("Failed to load image:", imageUrl, error);
+      });
+    });
+  }, []);
   return (
     <Router>
       <Routes>
