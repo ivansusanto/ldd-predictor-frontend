@@ -117,32 +117,14 @@ const Detail = () => {
                                     <span>{i + 1}.</span>
                                 </p>
                                 <img
-                                    src={async () => {
-                                        const res = await fetch(processed.sagittal.view[i], {
-                                            headers: {
-                                                "ngrok-skip-browser-warning": true
-                                            }
-                                        });
-                                        const blob = await res.blob();
-                                        const objectUrl = URL.createObjectURL(blob);
-                                        return objectUrl;
-                                    }}
+                                    src={processed.sagittal.view[i]}
                                     key={"disc" + i}
                                     alt="Sagittal Disc"
                                     className="w-full max-w-[300px] h-auto rounded-xl border shadow mt-2"
                                 />
                                 <div>
                                     <img
-                                        src={async () => {
-                                            const res = await fetch(processed.sagittal.cropped[i].url, {
-                                                headers: {
-                                                    "ngrok-skip-browser-warning": true
-                                                }
-                                            });
-                                            const blob = await res.blob();
-                                            const objectUrl = URL.createObjectURL(blob);
-                                            return objectUrl;
-                                        }}
+                                        src={processed.sagittal.cropped[i].url}
                                         key={"sagittal_" + i}
                                         alt="Sagittal Cropped"
                                         className="w-full max-w-[200px] h-auto rounded-xl border shadow mt-2"
@@ -150,16 +132,7 @@ const Detail = () => {
                                     <p className="text-sm text-gray-800 mt-5">{processed.sagittal.cropped[i].result}</p>
                                 </div>
                                 <img
-                                    src={async () => {
-                                        const res = await fetch(axial.result, {
-                                            headers: {
-                                                "ngrok-skip-browser-warning": true
-                                            }
-                                        });
-                                        const blob = await res.blob();
-                                        const objectUrl = URL.createObjectURL(blob);
-                                        return objectUrl;
-                                    }}
+                                    src={axial.result}
                                     key={"axial_" + i}
                                     alt="Axial Result"
                                     className="w-full max-w-[300px] h-auto rounded-xl border shadow mt-2"
@@ -168,16 +141,7 @@ const Detail = () => {
                                     {axial.cropped.map((cropped_data, j) =>
                                         <div key={"axial_" + i + "_" + j}>
                                             <img
-                                                src={async () => {
-                                                    const res = await fetch(cropped_data.url, {
-                                                        headers: {
-                                                            "ngrok-skip-browser-warning": true
-                                                        }
-                                                    });
-                                                    const blob = await res.blob();
-                                                    const objectUrl = URL.createObjectURL(blob);
-                                                    return objectUrl;
-                                                }}
+                                                src={cropped_data.url}
                                                 alt="Axial Cropped"
                                                 className="w-full max-w-[200px] h-auto rounded-xl border shadow mt-2"
                                             />

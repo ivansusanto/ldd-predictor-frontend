@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 
 const ImageSlider = ({
@@ -56,17 +56,8 @@ const ImageSlider = ({
                 />
                 <div className="w-full px-10">
                     <Slider ref={sliderRef} {...settings}>
-                        {images.map(async (url, index) => {
-                            const res = await fetch(url, {
-                                headers: {
-                                    "ngrok-skip-browser-warning": true
-                                }
-                            });
-                            const blob = await res.blob();
-                            const objectUrl = URL.createObjectURL(blob);
-                            url = objectUrl;
-                            
-                            return (<div
+                        {images.map((url, index) => (
+                            <div
                                 key={index}
                                 className="flex justify-center transition-transform duration-300"
                             >
@@ -84,8 +75,8 @@ const ImageSlider = ({
                                                 : " max-h-[50vh] opacity-50 scale-70"
                                         }`}
                                 />
-                            </div>)
-                        })}
+                            </div>
+                        ))}
                     </Slider>
                 </div>
                 <ArrowRight

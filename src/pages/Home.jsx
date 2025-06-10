@@ -387,31 +387,13 @@ const Home = () => {
                                 <h2 className="text-xl font-semibold text-center mb-5">Sagittal View</h2>
                                 <div className="flex justify-center items-center mb-10 gap-10">
                                     <img
-                                        src={async () => {
-                                            const res = await fetch(processed.sagittal.result, {
-                                                headers: {
-                                                    "ngrok-skip-browser-warning": true
-                                                }
-                                            });
-                                            const blob = await res.blob();
-                                            const objectUrl = URL.createObjectURL(blob);
-                                            return objectUrl;
-                                        }}
+                                        src={processed.sagittal.result}
                                         key="main_sagittal"
                                         alt="Sagittal Result"
                                         className="rounded-xl border shadow mt-2 max-w-[45%] h-auto object-contain"
                                     />
                                     <img
-                                        src={async () => {
-                                            const res = await fetch(processed.sagittal.view[selectedDisc], {
-                                                headers: {
-                                                    "ngrok-skip-browser-warning": true
-                                                }
-                                            });
-                                            const blob = await res.blob();
-                                            const objectUrl = URL.createObjectURL(blob);
-                                            return objectUrl;
-                                        }}
+                                        src={processed.sagittal.view[selectedDisc]}
                                         key="disc"
                                         alt="Sagittal Disc"
                                         className="rounded-xl border shadow mt-2 max-w-[45%] h-auto object-contain"
