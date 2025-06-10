@@ -101,6 +101,7 @@ const Detail = () => {
             data.sagittal.cropped = sagittalCroppedImages;
 
             setProcessed(data);
+            console.log(data)
         } catch (error) {
             Swal.fire('History not found', '', 'error');
         }
