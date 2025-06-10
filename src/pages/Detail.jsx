@@ -91,7 +91,7 @@ const Detail = () => {
                         });
                         if (!res.ok) throw new Error("Image load failed");
                         const blob = await res.blob();
-                        return URL.createObjectURL(blob);
+                        return { url: URL.createObjectURL(blob), result: cropped.result };
                     } catch (err) {
                         console.error("Image fetch failed", cropped.url, err);
                         return null;
