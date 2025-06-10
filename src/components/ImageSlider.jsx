@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 
 const ImageSlider = ({
@@ -41,27 +41,6 @@ const ImageSlider = ({
     };
 
     if (!images || images.length === 0) return null;
-
-    useEffect(async () => {
-        const blobImages = await Promise.all(
-            images.map(async (url) => {
-                try {
-                    const res = await fetch(url, {
-                        headers: {
-                            'ngrok-skip-browser-warning': 'true'
-                        }
-                    });
-                    if (!res.ok) throw new Error("Image load failed");
-                    const blob = await res.blob();
-                    return URL.createObjectURL(blob);
-                } catch (err) {
-                    console.error("Image fetch failed", url, err);
-                    return null;
-                }
-            })
-        );
-        images = blobImages;
-    }, []);
 
     return (
         <>
