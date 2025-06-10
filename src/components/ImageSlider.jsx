@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
 
 const ImageSlider = ({
@@ -14,6 +14,19 @@ const ImageSlider = ({
     sliderRef = useRef()
 }) => {
     const [currentSlide, setCurrentSlide] = useState(start);
+
+    useEffect(() => {
+        images = images.map(async (url) => {
+            const res = await fetch(url, {
+                headers: {
+                    "ngrok-skip-browser-warning": true
+                }
+            });
+            const blob = await res.blob();
+            const objectUrl = URL.createObjectURL(blob);
+            url = objectUrl;
+        });
+    }, []);
 
     const settings = {
         dots: false,
@@ -62,16 +75,7 @@ const ImageSlider = ({
                                 className="flex justify-center transition-transform duration-300"
                             >
                                 <img
-                                    src={async () => {
-                                        const res = await fetch(url, {
-                                            headers: {
-                                                "ngrok-skip-browser-warning": true
-                                            }
-                                        });
-                                        const blob = await res.blob();
-                                        const objectUrl = URL.createObjectURL(blob);
-                                        return objectUrl;
-                                    }}
+                                    src={url}
                                     alt={`${title} ${index + 1}`}
                                     className={`rounded shadow-md transition-all duration-300
                                         ${index === currentSlide
