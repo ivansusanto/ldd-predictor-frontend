@@ -16,7 +16,7 @@ const ImageSlider = ({
     const [currentSlide, setCurrentSlide] = useState(start);
 
     useEffect(() => {
-        images = images.map(async (url) => {
+        images = [...images.map(async (url) => {
             const res = await fetch(url, {
                 headers: {
                     "ngrok-skip-browser-warning": true
@@ -25,7 +25,7 @@ const ImageSlider = ({
             const blob = await res.blob();
             const objectUrl = URL.createObjectURL(blob);
             url = objectUrl;
-        });
+        })];
     }, []);
 
     const settings = {
