@@ -67,7 +67,7 @@ const Detail = () => {
                     try {
                         const res = await fetch(url, {
                             headers: {
-                            'ngrok-skip-browser-warning': 'true'
+                                'ngrok-skip-browser-warning': 'true'
                             }
                         });
                         if (!res.ok) throw new Error("Image load failed");
@@ -86,7 +86,7 @@ const Detail = () => {
                     try {
                         const res = await fetch(cropped.url, {
                             headers: {
-                            'ngrok-skip-browser-warning': 'true'
+                                'ngrok-skip-browser-warning': 'true'
                             }
                         });
                         if (!res.ok) throw new Error("Image load failed");
@@ -105,7 +105,7 @@ const Detail = () => {
                     try {
                         const res = await fetch(axial.result, {
                             headers: {
-                            'ngrok-skip-browser-warning': 'true'
+                                'ngrok-skip-browser-warning': 'true'
                             }
                         });
                         if (!res.ok) throw new Error("Image load failed");
@@ -114,7 +114,7 @@ const Detail = () => {
                         const cropped = axial.cropped.map(async (cropped) => {
                             const cropped_res = await fetch(cropped.url, {
                                 headers: {
-                                'ngrok-skip-browser-warning': 'true'
+                                    'ngrok-skip-browser-warning': 'true'
                                 }
                             });
                             if (!cropped_res.ok) throw new Error("Image load failed");
