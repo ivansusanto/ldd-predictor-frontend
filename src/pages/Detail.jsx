@@ -10,7 +10,7 @@ const Detail = () => {
 
     const navigate = useNavigate();
 
-    const FLASK_HOST = 'https://06ad-103-182-234-178.ngrok-free.app';
+    const FLASK_HOST = 'https://cool-narwhal-genuinely.ngrok-free.app';
 
     useEffect(() => {
         checkToken();
