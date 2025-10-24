@@ -21,6 +21,7 @@ const Home = () => {
     const [selectedSeries, setSelectedSeries] = useState(null);
     const [userLogin, setUserLogin] = useState(null);
     const [selectedDisc, setSelectedDisc] = useState(0);
+    const [line, setLine] = useState(0);
 
     const sliderRef = useRef();
     const navigate = useNavigate();
@@ -504,7 +505,7 @@ const Home = () => {
                                 <h2 className="text-xl font-semibold text-center mb-5">Sagittal View</h2>
                                 <div className="flex justify-center items-center mb-10 gap-10">
                                     <img
-                                        src={processed.sagittal.result}
+                                        src={processed.sagittal.line[line]}
                                         key="main_sagittal"
                                         alt="Sagittal Result"
                                         className="rounded-xl border shadow mt-2 max-w-[45%] h-auto object-contain"
@@ -547,6 +548,7 @@ const Home = () => {
                                     selectedDisc={selectedDisc}
                                     isSag={false}
                                     sliderRef={sliderRef}
+                                    setLine={setLine}
                                 />
                                 <button
                                     onClick={handleAxialProcess}

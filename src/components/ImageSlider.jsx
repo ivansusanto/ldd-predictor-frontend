@@ -11,7 +11,8 @@ const ImageSlider = ({
     setChoosedImage,
     selectedDisc = -1,
     isSag,
-    sliderRef = useRef()
+    sliderRef = useRef(),
+    setLine = () => {}
 }) => {
     const [currentSlide, setCurrentSlide] = useState(start);
 
@@ -26,7 +27,10 @@ const ImageSlider = ({
         arrows: false,
         afterChange: (index) => {
             setCurrentSlide(index);
+            
             if (isSag) setChoosedImage(index + 1);
+            else setLine(index);
+
             if (onSlideChange) {
                 onSlideChange(index);
             }
