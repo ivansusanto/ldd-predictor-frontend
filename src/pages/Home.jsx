@@ -373,7 +373,8 @@ const Home = () => {
                     <div className="flex w-1/2 gap-3 mx-auto mb-5">
                         <div className="w-full flex items-center justify-center">
                             <p className='w-1/2 text-end pe-5'>Sagittal Disc Detection :</p>
-                            <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel1(e.target.value)}} disabled={!processed ? false : true}>
+                            {/* <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel1(e.target.value)}} disabled={!processed ? false : true}> */}
+                            <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel1(e.target.value)}} disabled={true}>
                                 {[
                                     'sagittal-disc-YOLOv11_v1',
                                     'sagittal-disc-YOLOv11_v2',
@@ -388,7 +389,8 @@ const Home = () => {
                         </div>
                         <div className="w-full flex items-center justify-center">
                             <p className='w-1/2 text-end pe-5'>Axial Spinal Cord Detection :</p>
-                            <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel2(e.target.value)}} disabled={!processed ? false : true}>
+                            {/* <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel2(e.target.value)}} disabled={!processed ? false : true}> */}
+                            <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel2(e.target.value)}} disabled={true}>
                                 {[
                                     'axial-spinal-cord-YOLOv11_v1',
                                     'axial-spinal-cord-YOLOv11_v2',
@@ -404,7 +406,8 @@ const Home = () => {
                     <div className="flex w-1/2 gap-3 mx-auto">
                         <div className="w-full flex items-center justify-center">
                             <p className='w-1/2 text-end pe-5'>Pfirrmann Classification :</p>
-                            <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel3(e.target.value)}} disabled={!processed ? false : true}>
+                            {/* <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel3(e.target.value)}} disabled={!processed ? false : true}> */}
+                            <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel3(e.target.value)}} disabled={true}>
                                 {[
                                     'pfirrmann-EfficientViT-B2-C_v1',
                                     'pfirrmann-EfficientViT-B2-C_v2',
@@ -422,7 +425,8 @@ const Home = () => {
                         </div>
                         <div className="w-full flex items-center justify-center">
                             <p className='w-1/2 text-end pe-5'>Schizas Classification :</p>
-                            <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel4(e.target.value)}} disabled={!processed ? false : true}>
+                            {/* <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel4(e.target.value)}} disabled={!processed ? false : true}> */}
+                            <select name="series" id="series" className="w-1/2 text-left block py-2.5 px-0 text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer mx-auto" onChange={async (e) => {setModel4(e.target.value)}} disabled={true}>
                                 {[
                                     'schizas-EfficientViT-B2-C_v1',
                                     'schizas-EfficientViT-L2-C_v1',
