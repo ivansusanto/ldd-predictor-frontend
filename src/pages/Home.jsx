@@ -230,20 +230,36 @@ const Home = () => {
         }
     };
 
+    // function oldFillSelectedAxial(axial, disc) {
+    //     const selectedIndices = [];
+    //     const step = axial / disc;
+
+    //     for (let i = 0; i < disc; i++) {
+    //         const index = Math.floor((i + 0.5) * step);
+    //         if (index < axial) {
+    //             selectedIndices.push(index);
+    //         } else {
+    //             selectedIndices.push(axial - 1);
+    //         }
+    //     }
+
+    //     return selectedIndices.map(i => i + 1);
+    // }
+
     function fillSelectedAxial(axial, disc) {
         const selectedIndices = [];
-        const step = axial / disc;
+        const usedAxial = [axial - 13, axial - 10, axial - 7, axial - 4, axial - 1];
+        const unusedAxial = [];
 
-        for (let i = 0; i < disc; i++) {
-            const index = Math.floor((i + 0.5) * step);
-            if (index < axial) {
-                selectedIndices.push(index);
-            } else {
-                selectedIndices.push(axial - 1);
-            }
-        }
+        for (let i = 0; i < axial; i++)
+            if (!usedAxial.includes(i + 1)) unusedAxial.push(i + 1);
 
-        return selectedIndices.map(i => i + 1);
+        for (let i = 0; i < disc - 5; i++)
+            selectedIndices.push(unusedAxial[i]);
+        
+        selectedIndices.push(...usedAxial);
+
+        return selectedIndices;
     }
 
     const handleSagittalProcess = async () => {
