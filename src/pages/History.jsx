@@ -99,7 +99,7 @@ const History = () => {
                 </div>
             </nav>
 
-            <div className="mx-auto mt-10">
+            <div className="mx-10 mt-10">
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     {data.length === 0 ? (
                         <p className="text-gray-500">No histories found.</p>
