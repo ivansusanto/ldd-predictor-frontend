@@ -110,6 +110,8 @@ const History = () => {
                                     <tr className="bg-gray-100 text-left text-sm font-semibold text-gray-700">
                                         <th className="px-4 py-2">No</th>
                                         <th className="px-4 py-2">History ID</th>
+                                        <th className="px-4 py-2">Patient ID</th>
+                                        <th className="px-4 py-2">Patient Name</th>
                                         <th className="px-4 py-2">Created At</th>
                                         <th className="px-4 py-2">Action</th>
                                     </tr>
@@ -119,6 +121,8 @@ const History = () => {
                                         <tr key={i} className="border-b text-start">
                                             <td className="px-4 py-2">{i + 1}</td>
                                             <td className="px-4 py-2">{hist.id}</td>
+                                            <td className="px-4 py-2">{hist.patient_id}</td>
+                                            <td className="px-4 py-2">{hist.patient_name}</td>
                                             <td className="px-4 py-2">
                                                 {(() => {
                                                     const date = new Date(hist.created_at);
