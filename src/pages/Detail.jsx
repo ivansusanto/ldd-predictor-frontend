@@ -178,6 +178,11 @@ const Detail = () => {
                 <div className="bg-white shadow-md m-10 mx-20 p-5 pt-10 rounded-lg">
                     <h1 className="text-2xl font-semibold text-center mb-10 underline">Result Report</h1>
 
+                    <div className="mb-10">
+                        <p className="text-lg"><strong>Patient ID:</strong> {processed.patient_id}</p>
+                        <p className="text-lg"><strong>Patient Name:</strong> {processed.patient_name}</p>
+                    </div>
+
                     <div className="bg-pink-200 p-10 m-5 rounded-lg">
                         <p className='text-center font-bold'>Pfirrmann and Schizas Grade</p>
                         {
