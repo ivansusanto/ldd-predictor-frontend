@@ -225,11 +225,12 @@ const Detail = () => {
                                         </div>
                                     )}
                                 </div>
-                                <p className='text-justify max-w-1/4'>The lumbar disc at <b>number {i + 1}</b> is classified as Pfirrmann classification as <b>{processed.sagittal.cropped[i].result.split('] ')[1]}</b> and Schizas classification as <b>{axial.cropped[0].result.split('] ')[1]}</b>. Therefore, the recommended operative procedure for the patient is <b>{processed.method[i]}</b>.</p>
+                                {/* <p className='text-justify max-w-1/4'>The lumbar disc at <b>number {i + 1}</b> is classified as Pfirrmann classification as <b>{processed.sagittal.cropped[i].result.split('] ')[1]}</b> and Schizas classification as <b>{axial.cropped[0].result.split('] ')[1]}</b>. Therefore, the recommended operative procedure for the patient is <b>{processed.method[i]}</b>.</p> */}
+                                <p className='text-justify max-w-1/4'>The lumbar disc at <b>number {i + 1}</b> is classified as Pfirrmann classification as <b>{processed.sagittal.cropped[i].result.split('] ')[1]}</b> and Schizas classification as <b>{axial.cropped[0].result.split('] ')[1]}</b>.</p>
                             </div>)
                         }
                     </div>
-                    <div className="bg-pink-200 p-10 px-20 m-5 rounded-lg">
+                    {/* <div className="bg-pink-200 p-10 px-20 m-5 rounded-lg">
                         <p className='text-center mb-5 font-bold'>The Conclusion</p>
                         <span className='text-justify px-10 mb-5'>
                             {
@@ -272,7 +273,7 @@ const Detail = () => {
                             }
                         </span>
 
-                    </div>
+                    </div> */}
                 </div>
             </div>}
         </div>
